@@ -1,0 +1,51 @@
+DOCES GU PREMIUM — LANDING PAGE / CATÁLOGO DIGITAL
+
+1. COMO ABRIR
+   Abra index.html no navegador (Chrome, Edge, Firefox).
+   Não é necessário instalar pacotes nem iniciar servidor.
+
+2. COMO PUBLICAR
+   Envie o conteúdo desta pasta para a hospedagem, mantendo:
+   - index.html
+   - styles.css
+   - script.js
+   - assets/
+   - downloads/
+   Em hospedagens como GitHub Pages ou Netlify, o site é estático.
+
+3. O QUE ESTÁ FUNCIONAL
+   - Página mobile-first, com fotos e identidade visual da marca.
+   - Catálogo com filtros.
+   - Detalhes de cada item.
+   - Lista de orçamento com quantidades.
+   - Mensagem pronta para WhatsApp (pedidos não são enviados automaticamente).
+   - Links para os telefones e Instagram informados no catálogo.
+   - PDF original otimizado para consulta.
+   - Seção especial para Biriba, com arte ilustrativa e avisos de atualização.
+
+4. COMO EDITAR OS PRODUTOS
+   Abra script.js e altere a lista PRODUCTS no início do arquivo.
+   Quando a foto verdadeira da Biriba estiver disponível:
+   - copie-a para assets/biriba.webp
+   - no item id:'biriba', substitua image:null por image:'assets/biriba.webp'
+   - atualize subtitle, description e notice com as informações validadas
+   - ajuste o conteúdo da seção de destaque em index.html, se necessário.
+
+5. WHATSAPP
+   O número principal utilizado em botões e orçamentos é 55 32 99928-6097,
+   conforme o catálogo original. Pode ser alterado em WHATSAPP_NUMBER no script.js.
+   O segundo número, 55 32 98493-4826, aparece no rodapé.
+
+6. INFORMAÇÕES QUE PRECISAM DE CONFIRMAÇÃO
+   - Foto, especificações, categoria e disponibilidade da Biriba.
+   - Preços, prazos, locais atendidos e condições de venda.
+   - Peso/quantidade do Amendoleite.
+   - Ingredientes, alergênicos, rotulagem nutricional e demais informações legais.
+   O site não inventa esses dados.
+
+7. PRIVACIDADE E SEGURANÇA
+   O site é estático; a lista de orçamento fica apenas em memória enquanto
+   a página estiver aberta. Não há sistema de pagamentos, cookies próprios,
+   ferramentas de analytics ou coleta de formulário. Adicionar essas funcionalidades
+   no futuro exigirá revisão de privacidade, LGPD e outras regras aplicáveis.
+   O CSS utiliza fontes locais/de sistema, sem solicitações a serviços de fontes.
