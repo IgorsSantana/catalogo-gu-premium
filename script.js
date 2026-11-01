@@ -5,19 +5,13 @@ const PRODUCTS = [
     id: 'amendoleite', name: 'Amendoleite', category: 'doces', categoryLabel: 'Doce de amendoim',
     subtitle: 'Doce de amendoim com leite, no pote apresentado nas fotos da marca.',
     description: 'O Amendoleite é identificado na embalagem como “Doce de Amendoim com Leite”. Consulte peso, composição, alergênicos, disponibilidade e preço com a equipe.',
-    image: 'assets/amendoleite-frente.webp', imageAlt: 'Pote de Amendoleite Doces Gu Premium', theme: 'amendoleite', label: 'Em destaque', notice: 'Peso, preço e condições sob consulta.'
+    image: 'assets/amendoleite-recorte.webp', imageAlt: 'Pote de Amendoleite Doces Gu Premium sem fundo', theme: 'amendoleite', label: 'Em destaque', notice: 'Peso, preço e condições sob consulta.'
   },
   {
     id: 'pacoca', name: 'Paçoca Caseira Premium 90g', category: 'doces', categoryLabel: 'Paçoca premium',
     subtitle: 'A paçoca caseira premium de 90g apresentada no catálogo da marca.',
     description: 'Paçoca Caseira Premium 90g. O catálogo informa “mais amendoim” e “menos açúcar”, sem apresentar valores nutricionais comparativos. Consulte informações de rótulo e preço com a equipe.',
     image: 'assets/pacoca-premium.webp', imageAlt: 'Paçocas Caseiras Premium da Doces Gu Premium, em embalagens individuais', theme: 'pacoca', label: 'Clássico', notice: '90g por unidade conforme o catálogo.'
-  },
-  {
-    id: 'biriba', name: 'Biriba', category: 'novidades', categoryLabel: 'Produto em atualização',
-    subtitle: 'Conheça a seção da Biriba. Foto e especificações oficiais a confirmar.',
-    description: 'A Biriba foi adicionada como solicitado. A imagem oficial, o peso, os sabores e a disponibilidade ainda não constam nos materiais enviados. Entre em contato para conhecer os detalhes corretos.',
-    image: null, imageAlt: 'Arte tipográfica ilustrativa da Biriba', theme: 'biriba', label: 'Em atualização', notice: 'Apresentação ilustrativa. Consulte versões e disponibilidade.',
   },
   {
     id: 'caixa', name: 'Caixa com 4 espetos', category: 'revenda', categoryLabel: 'Linha de revenda',
@@ -41,7 +35,6 @@ const productById = id => PRODUCTS.find(p => p.id === id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 function artFor(product) {
-  if (!product.image) return '<div class="biriba-card-art"><span>BIRIBA</span><small>APRESENTAÇÃO EM ATUALIZAÇÃO</small></div>';
   return `<img src="${esc(product.image)}" alt="${esc(product.imageAlt)}" loading="lazy">`;
 }
 
@@ -49,7 +42,7 @@ function renderProducts(filter = 'todos') {
   const list = PRODUCTS.filter(p => filter === 'todos' || p.category === filter);
   $('#productGrid').innerHTML = list.map(p => `
     <article class="product-card">
-      <div class="product-photo is-${p.theme}"><span class="product-label ${p.id === 'biriba' ? 'yellow' : ''}">${esc(p.label)}</span>${artFor(p)}</div>
+      <div class="product-photo is-${p.theme}"><span class="product-label">${esc(p.label)}</span>${artFor(p)}</div>
       <div class="product-body">
         <span class="product-category">${esc(p.categoryLabel)}</span>
         <h3>${esc(p.name)}</h3>

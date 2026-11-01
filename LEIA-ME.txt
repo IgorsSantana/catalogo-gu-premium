@@ -1,51 +1,46 @@
 DOCES GU PREMIUM — LANDING PAGE / CATÁLOGO DIGITAL
 
 1. COMO ABRIR
-   Abra index.html no navegador (Chrome, Edge, Firefox).
-   Não é necessário instalar pacotes nem iniciar servidor.
+   Abra index.html no navegador (Chrome, Edge ou Firefox).
+   O catálogo é estático; não exige instalação de dependências.
 
 2. COMO PUBLICAR
-   Envie o conteúdo desta pasta para a hospedagem, mantendo:
+   Publique os arquivos na raiz do repositório ou hospedagem estática:
    - index.html
    - styles.css
    - script.js
    - assets/
    - downloads/
-   Em hospedagens como GitHub Pages ou Netlify, o site é estático.
+   Os caminhos são relativos e funcionam em GitHub Pages, Render Static Site e similares.
 
 3. O QUE ESTÁ FUNCIONAL
-   - Página mobile-first, com fotos e identidade visual da marca.
-   - Catálogo com filtros.
-   - Detalhes de cada item.
-   - Lista de orçamento com quantidades.
-   - Mensagem pronta para WhatsApp (pedidos não são enviados automaticamente).
-   - Links para os telefones e Instagram informados no catálogo.
-   - PDF original otimizado para consulta.
-   - Seção especial para Biriba, com arte ilustrativa e avisos de atualização.
+   - Página responsiva com identidade visual Doces Gu Premium.
+   - Catálogo com filtros de doces e itens para revenda.
+   - Detalhes de produto e lista de orçamento com quantidades.
+   - Mensagem pronta para atendimento por WhatsApp.
+   - Seção de destaque para Amendoleite e acesso ao PDF original.
+   - Imagem transparente otimizada em assets/amendoleite-recorte.webp.
 
-4. COMO EDITAR OS PRODUTOS
-   Abra script.js e altere a lista PRODUCTS no início do arquivo.
-   Quando a foto verdadeira da Biriba estiver disponível:
-   - copie-a para assets/biriba.webp
-   - no item id:'biriba', substitua image:null por image:'assets/biriba.webp'
-   - atualize subtitle, description e notice com as informações validadas
-   - ajuste o conteúdo da seção de destaque em index.html, se necessário.
+4. PRODUTOS E NOMENCLATURA
+   A marca confirmou que Biriba e Amendoleite correspondem ao mesmo doce.
+   O catálogo digital utiliza apenas o nome AMENDOLEITE.
+   Para editar produtos, altere PRODUCTS no início de script.js.
+   O destaque principal e o card do Amendoleite usam o recorte transparente.
 
 5. WHATSAPP
-   O número principal utilizado em botões e orçamentos é 55 32 99928-6097,
-   conforme o catálogo original. Pode ser alterado em WHATSAPP_NUMBER no script.js.
-   O segundo número, 55 32 98493-4826, aparece no rodapé.
+   Principal (botões/orçamentos): (32) 99928-6097.
+   Alternativo no rodapé: (32) 98493-4826.
+   Atualize WHATSAPP_NUMBER em script.js para trocar o número do pedido.
 
-6. INFORMAÇÕES QUE PRECISAM DE CONFIRMAÇÃO
-   - Foto, especificações, categoria e disponibilidade da Biriba.
-   - Preços, prazos, locais atendidos e condições de venda.
-   - Peso/quantidade do Amendoleite.
-   - Ingredientes, alergênicos, rotulagem nutricional e demais informações legais.
-   O site não inventa esses dados.
+6. INFORMAÇÕES A CONFIRMAR COM A MARCA
+   - Preços, disponibilidade, entrega e condições comerciais.
+   - Peso e composição, alergênicos, dados nutricionais e informações de rótulo.
+   - A imagem de destaque foi tratada digitalmente. Antes da publicação
+     comercial definitiva, confira se todos os elementos do rótulo mostrado
+     continuam fiéis ao produto real.
 
-7. PRIVACIDADE E SEGURANÇA
-   O site é estático; a lista de orçamento fica apenas em memória enquanto
-   a página estiver aberta. Não há sistema de pagamentos, cookies próprios,
-   ferramentas de analytics ou coleta de formulário. Adicionar essas funcionalidades
-   no futuro exigirá revisão de privacidade, LGPD e outras regras aplicáveis.
-   O CSS utiliza fontes locais/de sistema, sem solicitações a serviços de fontes.
+7. PRIVACIDADE
+   A lista de orçamento permanece no navegador durante a sessão.
+   O site não possui formulário, conta, pagamentos ou analytics próprios.
+   O CSS atual solicita fontes externas do Google Fonts; avalie a necessidade
+   de hospedar fontes localmente e adequar os avisos de privacidade.
