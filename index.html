@@ -16,7 +16,6 @@
 <body>
   <svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
-    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M4 8h16l-1 13H5L4 8Zm5 0V6a3 3 0 0 1 6 0v2"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
     <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 8.3c0 4.3-8.8 10.2-8.8 10.2S3.2 12.6 3.2 8.3a4.7 4.7 0 0 1 8.8-2.1 4.7 4.7 0 0 1 8.8 2.1Z"/></symbol>
     <symbol id="i-box" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4v10l-9 4-9-4V7Zm0 0 9 4 9-4m-9 4v10"/></symbol>
@@ -25,8 +24,6 @@
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
     <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 18v3h16v-3"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
   </svg>
 
   <div class="topline">O SABOR DA DOCES GU PREMIUM <span class="topline-dot">✦</span> ATENDIMENTO E REVENDA PELO WHATSAPP</div>
@@ -40,9 +37,6 @@
         <a href="#contato">Contato</a>
       </nav>
       <div class="nav-actions">
-        <button class="cart-toggle" type="button" data-open-cart aria-label="Abrir lista de orçamento">
-          <svg class="icon"><use href="#i-bag"/></svg><span class="cart-text">Meu pedido</span><span class="cart-count" id="cartCount">0</span>
-        </button>
         <button class="menu-toggle" type="button" id="mobileMenuBtn" aria-label="Abrir menu" aria-controls="navLinks" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
       </div>
     </div>
@@ -122,10 +116,10 @@
     <section class="faq-section section-pad" id="duvidas">
       <div class="container faq-grid"><div class="faq-intro"><span class="eyebrow dark">PERGUNTAS FREQUENTES</span><h2>Tudo o que você precisa saber.</h2><p>Se ainda tiver alguma dúvida, nosso atendimento está a uma mensagem de distância.</p></div>
         <div class="faq-list">
-          <details><summary>Como faço para pedir um orçamento? <span>+</span></summary><p>Adicione os produtos à lista pelo catálogo e clique em “Enviar pelo WhatsApp”. A mensagem será preparada com os itens e quantidades escolhidos.</p></details>
+          <details><summary>Como faço para pedir um orçamento? <span>+</span></summary><p>Clique em “Ver detalhes” para conhecer cada produto e converse diretamente com a equipe pelo WhatsApp para consultar preços, disponibilidade e condições de compra.</p></details>
           <details><summary>Onde encontro os preços? <span>+</span></summary><p>Os valores não constam no material enviado. Consulte a equipe pelo WhatsApp para receber preços e condições atualizadas.</p></details>
           <details><summary>Posso comprar para revender? <span>+</span></summary><p>Sim, o catálogo oferece opções para revenda. Consulte as condições e quantidades diretamente com a marca.</p></details>
-          <details><summary>Quais são as apresentações da paçoca? <span>+</span></summary><p>A Paçoca Caseira Premium é um só produto, disponível no catálogo como unidade de 90 g, espeto com 30 unidades ou caixa com 4 espetos. Escolha a apresentação no catálogo antes de adicionar ao pedido.</p></details>
+          <details><summary>Quais são as apresentações da paçoca? <span>+</span></summary><p>A Paçoca Caseira Premium é um só produto, disponível no catálogo como unidade de 90 g, espeto com 30 unidades ou caixa com 4 espetos. As três apresentações, com fotos da unidade, do espeto e da caixa, estão nos detalhes da paçoca.</p></details>
           <details><summary>Vocês fazem entregas? <span>+</span></summary><p>Consulte as regiões atendidas, prazos e condições diretamente pelo WhatsApp.</p></details>
         </div>
       </div>
@@ -136,14 +130,10 @@
 
   <footer class="site-footer"><div class="container footer-main"><div class="footer-brand"><a href="#inicio"><img src="assets/logo.png" alt="Doces Gu Premium" width="215" height="76"></a><p>Um mundo de sabores para adoçar os seus melhores momentos.</p></div><div class="footer-col"><strong>Navegue</strong><a href="#catalogo">Produtos</a><a href="#amendoleite-destaque">Amendoleite</a><a href="#revenda">Revenda</a></div><div class="footer-col"><strong>Fale conosco</strong><a href="https://wa.me/5532999286097" target="_blank" rel="noopener noreferrer">(32) 99928-6097</a><a href="https://wa.me/5532984934826" target="_blank" rel="noopener noreferrer">(32) 98493-4826</a><a href="https://www.instagram.com/docesgupremium/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-instagram"/></svg> @docesgupremium</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> Doces Gu Premium. Catálogo digital.</span><button type="button" id="privacyBtn">Privacidade e informações</button><a href="#topo">Voltar ao topo ↑</a></div></footer>
 
-  <div class="overlay" id="overlay" hidden></div>
-  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" tabindex="-1"><div class="drawer-header"><div><span class="eyebrow dark">SEUS FAVORITOS</span><h2 id="cartTitle">Meu pedido <span id="drawerCount">(0)</span></h2></div><button class="icon-btn" type="button" data-close-cart aria-label="Fechar lista"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="drawer-items" id="cartItems"></div><div class="drawer-footer"><p>Valores, disponibilidade e entrega serão confirmados pela equipe.</p><button class="btn btn-primary full" type="button" id="sendWhatsApp">Enviar pelo WhatsApp <svg class="icon"><use href="#i-arrow"/></svg></button></div></aside>
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" tabindex="-1"><div class="modal-card"><button class="icon-btn modal-close" type="button" id="closeModal" aria-label="Fechar detalhes"><svg class="icon"><use href="#i-close"/></svg></button><div class="modal-image" id="modalImage"></div><div class="modal-text"><span class="eyebrow dark">DOCES GU PREMIUM</span><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="modal-presentations" id="modalPresentations"></div><div class="modal-notice" id="modalNotice"></div><a class="btn btn-primary full" id="modalContact" href="https://wa.me/5532999286097" target="_blank" rel="noopener noreferrer">Consultar pelo WhatsApp <svg class="icon"><use href="#i-chat"/></svg></a></div></div></div>
 
-  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" tabindex="-1"><div class="modal-card"><button class="icon-btn modal-close" type="button" id="closeModal" aria-label="Fechar detalhes"><svg class="icon"><use href="#i-close"/></svg></button><div class="modal-image" id="modalImage"></div><div class="modal-text"><span class="eyebrow dark">DOCES GU PREMIUM</span><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="modal-variants" id="modalVariants"></div><div class="modal-notice" id="modalNotice"></div><button type="button" class="btn btn-primary full" id="modalAdd">Adicionar ao pedido <svg class="icon"><use href="#i-plus"/></svg></button></div></div></div>
+  <div class="privacy-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true" tabindex="-1"><div class="privacy-card"><button class="icon-btn privacy-close" type="button" id="privacyClose" aria-label="Fechar informações"><svg class="icon"><use href="#i-close"/></svg></button><h2 id="privacyTitle">Privacidade e informações</h2><p>Esta versão do catálogo não tem formulário, conta de usuário, sistema de pagamentos ou ferramentas de rastreamento instaladas. O catálogo funciona como vitrine e não armazena itens de carrinho nem dados de pedidos.</p><p>Ao clicar para falar com a marca, você é direcionado ao WhatsApp, sujeito às políticas desse serviço. Confira valores, alergênicos, ingredientes, informações de rótulo e disponibilidade diretamente com o fabricante antes da compra.</p><button class="btn btn-primary" type="button" id="privacyOk">Entendi <svg class="icon"><use href="#i-check"/></svg></button></div></div>
 
-  <div class="privacy-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" aria-hidden="true" tabindex="-1"><div class="privacy-card"><button class="icon-btn privacy-close" type="button" id="privacyClose" aria-label="Fechar informações"><svg class="icon"><use href="#i-close"/></svg></button><h2 id="privacyTitle">Privacidade e informações</h2><p>Esta versão do catálogo não tem formulário, conta de usuário, sistema de pagamentos ou ferramentas de rastreamento instaladas. Os itens escolhidos permanecem temporariamente nesta página enquanto ela estiver aberta.</p><p>Ao clicar para falar com a marca, você é direcionado ao WhatsApp, sujeito às políticas desse serviço. Confira valores, alergênicos, ingredientes, informações de rótulo e disponibilidade diretamente com o fabricante antes da compra.</p><button class="btn btn-primary" type="button" id="privacyOk">Entendi <svg class="icon"><use href="#i-check"/></svg></button></div></div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js" defer></script>
 </body>
 </html>

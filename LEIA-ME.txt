@@ -1,23 +1,15 @@
 DOCES GU PREMIUM — CATÁLOGO DIGITAL 2026
+Catálogo responsivo, em formato de vitrine, sem carrinho de compras.
 
-Site estático e responsivo para catálogo de produtos com orçamento pelo WhatsApp.
+- Abra index.html ou publique a raiz do projeto em hospedagem estática.
+- Catálogo oficial 2026: downloads/catalogo-2026.pdf.
 
-COMEÇAR
-- Abra index.html no navegador, ou publique a raiz do projeto em uma hospedagem estática.
-- Todos os arquivos e imagens ficam nas pastas deste pacote.
-- Catálogo em PDF disponibilizado no site: downloads/catalogo-original.pdf. O PDF revisado de 2026 está incluído no pacote ZIP atualizado.
+Produtos: Amendoleite, Paçoca Caseira Premium e Amendoim Frito Salgado Sem Pele com Alho 45 g.
+A Paçoca Caseira Premium é um único produto, com as seguintes apresentações mostradas nos detalhes:
+- Unidade de 90 g;
+- Espeto com 30 unidades;
+- Caixa com 4 espetos (120 unidades ao todo).
 
-PRODUTOS (três itens únicos)
-1. Amendoleite — doce de amendoim com leite, embalagem em pote. O nome Biriba foi unificado a Amendoleite a pedido da marca.
-2. Paçoca Caseira Premium — um único produto com três apresentações: unidade de 90 g, espeto com 30 unidades, caixa com 4 espetos (total 120 unidades).
-3. Amendoim Frito Salgado Sem Pele com Alho — embalagem individual de 45 g, extraído do catálogo PDF de 2026. A imagem sem fundo está em assets/amendoim-frito-45g.webp (PNG em assets/amendoim-frito-45g.png).
-
-PEDIDOS
-- O botão + adiciona o produto; a paçoca tem seletor de apresentação.
-- O carrinho separa a paçoca por apresentação e preserva quantidades independentes.
-- O WhatsApp recebe a lista de produtos com a apresentação escolhida. Os preços continuam sob consulta.
-
-OBSERVAÇÕES
-- O PDF de 2026 também usa a nomenclatura comercial "Biribá Palito" em uma apresentação própria; mantivemos o nome Amendoleite conforme a orientação anterior do cliente, sem atribuir automaticamente a ele o peso da apresentação do PDF.
-- O site não usa autenticação, pagamentos ou rastreamento. Os itens de orçamento ficam na memória da aba.
-- Consulte a marca para valores, estoque, alergênicos e condições de entrega.
+Os produtos exibem botão “Ver detalhes”, fotos e ligação para consulta direta por WhatsApp. Não há carrinho, soma de quantidades ou checkout.
+Valores, disponibilidade, condições, peso aplicável às apresentações e alergênicos: confirmar com a marca.
+O PDF 2026 identifica “Biribá Palito”, mas a página usa o nome Amendoleite conforme a preferência comercial indicada anteriormente.
