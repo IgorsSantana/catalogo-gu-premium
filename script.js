@@ -2,28 +2,27 @@
 
 const PRODUCTS = [
   {
-    id: 'amendoleite', name: 'Amendoleite', category: 'doces', categoryLabel: 'Doce de amendoim',
-    subtitle: 'Doce de amendoim com leite, no pote apresentado nas fotos da marca.',
-    description: 'O Amendoleite é identificado na embalagem como “Doce de Amendoim com Leite”. Consulte peso, composição, alergênicos, disponibilidade e preço com a equipe.',
-    image: 'assets/amendoleite-recorte.webp', imageAlt: 'Pote de Amendoleite Doces Gu Premium sem fundo', theme: 'amendoleite', label: 'Em destaque', notice: 'Peso, preço e condições sob consulta.'
+    id: 'amendoleite', name: 'Amendoleite', category: 'doces', tags: ['doces', 'revenda'], categoryLabel: 'Doce de amendoim com leite',
+    subtitle: 'O doce de amendoim com leite da Doces Gu Premium, apresentado em pote.',
+    description: 'O Amendoleite é identificado na embalagem como “Doce de Amendoim com Leite”. Consulte composição, alergênicos, peso, disponibilidade e valores com a equipe.',
+    image: 'assets/amendoleite-recorte.webp', imageAlt: 'Pote de Amendoleite Doces Gu Premium', theme: 'amendoleite', label: 'Em destaque', notice: 'Preço e apresentação sob consulta.'
   },
   {
-    id: 'pacoca', name: 'Paçoca Caseira Premium 90g', category: 'doces', categoryLabel: 'Paçoca premium',
-    subtitle: 'A paçoca caseira premium de 90g apresentada no catálogo da marca.',
-    description: 'Paçoca Caseira Premium 90g. O catálogo informa “mais amendoim” e “menos açúcar”, sem apresentar valores nutricionais comparativos. Consulte informações de rótulo e preço com a equipe.',
-    image: 'assets/pacoca-premium.webp', imageAlt: 'Paçocas Caseiras Premium da Doces Gu Premium, em embalagens individuais', theme: 'pacoca', label: 'Clássico', notice: '90g por unidade conforme o catálogo.'
+    id: 'pacoca', name: 'Paçoca Caseira Premium', category: 'doces', tags: ['doces', 'revenda'], categoryLabel: 'Linha de paçocas',
+    subtitle: 'Paçoca caseira premium de 90 g, com opções de espeto e caixa para revenda.',
+    description: 'A mesma Paçoca Caseira Premium do catálogo de 2026, em três apresentações: unidade de 90 g, espeto com 30 unidades e caixa com 4 espetos. Consulte preços e disponibilidade com a equipe.',
+    image: 'assets/pacoca-premium.webp', imageAlt: 'Paçoca Caseira Premium em sua embalagem individual', theme: 'pacoca', label: '3 apresentações', notice: 'Um único produto, com unidade, espeto ou caixa.',
+    variants: [
+      {id:'unidade', name:'Unidade — 90 g'},
+      {id:'espeto', name:'Espeto — 30 unidades'},
+      {id:'caixa', name:'Caixa — 4 espetos (120 unidades)'}
+    ]
   },
   {
-    id: 'caixa', name: 'Caixa com 4 espetos', category: 'revenda', categoryLabel: 'Linha de revenda',
-    subtitle: 'Caixa de paçocas para revendedores, com 4 espetos.',
-    description: 'O catálogo original apresenta caixa com 4 espetos de Paçoca Caseira Premium. Cada espeto é identificado com 30 unidades. Consulte disponibilidade e condições comerciais.',
-    image: 'assets/caixa-revenda.webp', imageAlt: 'Caixa de doces da marca Doces Gu Premium', theme: 'box', label: 'Para revenda', notice: '4 espetos por caixa, conforme o catálogo.'
-  },
-  {
-    id: 'espeto', name: 'Espeto com 30 unidades', category: 'revenda', categoryLabel: 'Linha de revenda',
-    subtitle: 'Formato com 30 unidades de paçoca por espeto.',
-    description: 'Apresentação em espeto com 30 unidades, conforme o catálogo da Paçoca Caseira Premium 90g. Consulte a equipe para confirmar condições e disponibilidade.',
-    image: 'assets/espeto-pacoca.webp', imageAlt: 'Espetos de paçocas em embalagens individuais', theme: 'espeto', label: 'Para revenda', notice: '30 unidades por espeto, conforme o catálogo.'
+    id: 'amendoim', name: 'Amendoim Frito Salgado', category: 'salgados', tags: ['salgados', 'revenda'], categoryLabel: 'Linha salgada',
+    subtitle: 'Amendoim frito salgado sem pele, com alho. Pacote individual de 45 g.',
+    description: 'Amendoim Frito Salgado Sem Pele com Alho, embalagem individual de 45 g, conforme o Catálogo Doces Gu Premium 2026. Pronto para lanches, porções e momentos de descontração. Consulte alergênicos, preço e disponibilidade.',
+    image: 'assets/amendoim-frito-45g.webp', imageAlt: 'Pacote de Amendoim Frito Salgado sem pele com alho 45 g, com fundo transparente', theme: 'amendoim', label: 'Novidade no catálogo', notice: 'Embalagem individual de 45 g conforme catálogo 2026.'
   }
 ];
 
@@ -37,16 +36,21 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;'
 function artFor(product) {
   return `<img src="${esc(product.image)}" alt="${esc(product.imageAlt)}" loading="lazy">`;
 }
-
+function variantPicker(product, context) {
+  if (!product.variants) return '';
+  const id = `presentation-${context}-${product.id}`;
+  return `<div class="variant-field"><label for="${id}">Apresentação</label><select id="${id}" data-product-variant>${product.variants.map(v=>`<option value="${esc(v.id)}">${esc(v.name)}</option>`).join('')}</select></div>`;
+}
 function renderProducts(filter = 'todos') {
-  const list = PRODUCTS.filter(p => filter === 'todos' || p.category === filter);
+  const list = PRODUCTS.filter(p => filter === 'todos' || p.tags.includes(filter));
   $('#productGrid').innerHTML = list.map(p => `
-    <article class="product-card">
+    <article class="product-card" data-product-card="${esc(p.id)}">
       <div class="product-photo is-${p.theme}"><span class="product-label">${esc(p.label)}</span>${artFor(p)}</div>
       <div class="product-body">
         <span class="product-category">${esc(p.categoryLabel)}</span>
         <h3>${esc(p.name)}</h3>
         <p>${esc(p.subtitle)}</p>
+        ${variantPicker(p, 'card')}
         <div class="product-bottom">
           <div class="product-price"><small>Preço</small><strong>Sob consulta</strong></div>
           <div class="product-actions">
@@ -58,31 +62,50 @@ function renderProducts(filter = 'todos') {
     </article>
   `).join('');
 }
-
+function decodeItem(key) {
+  const [id, variantId] = key.split(':');
+  const product = productById(id);
+  const variant = product?.variants?.find(v=>v.id===variantId);
+  return {product, variant};
+}
+function itemKey(id, variantId) {
+  const product = productById(id);
+  if (!product) return null;
+  if (product.variants) {
+    if (!product.variants.some(v=>v.id===variantId)) return null;
+    return `${id}:${variantId}`;
+  }
+  return id;
+}
 function totalItems() {return [...basket.values()].reduce((a,b) => a+b,0);}
 function toast(msg) {
   const el = $('#toast'); el.textContent = msg;
   el.classList.add('show'); clearTimeout(toast.timer);
   toast.timer = setTimeout(() => el.classList.remove('show'), 2500);
 }
-function changeQty(id, delta) {
-  if (!productById(id)) return;
-  const next = Math.max(0, Math.min(99, (basket.get(id) || 0) + delta));
-  if (next === 0) basket.delete(id); else basket.set(id, next);
+function changeQty(key, delta) {
+  if (!decodeItem(key).product) return;
+  const next = Math.max(0, Math.min(99, (basket.get(key) || 0) + delta));
+  if (next === 0) basket.delete(key); else basket.set(key, next);
   renderBasket();
 }
-function addItem(id) {
-  changeQty(id, 1);
-  toast(`${productById(id).name} adicionado ao pedido`);
+function addItem(id, variantId) {
+  const key = itemKey(id, variantId);
+  if (!key) return;
+  changeQty(key, 1);
+  const {product, variant} = decodeItem(key);
+  toast(`${product.name}${variant ? ' — ' + variant.name : ''} adicionado ao pedido`);
 }
 function renderBasket() {
   const count = totalItems();
   $('#cartCount').textContent = count;
   $('#drawerCount').textContent = `(${count})`;
-  $('#cartItems').innerHTML = !count ? `<div class="cart-empty"><svg class="icon"><use href="#i-bag"/></svg><strong>Seu pedido está vazio</strong><p>Adicione seus doces favoritos pelo catálogo para solicitar um orçamento.</p><button class="btn btn-outline" type="button" data-shopping>Ver produtos <svg class="icon"><use href="#i-arrow"/></svg></button></div>` :
-    [...basket].map(([id,qty]) => {
-      const p = productById(id);
-      return `<div class="cart-item"><div class="cart-item-img">${artFor(p)}</div><div><button type="button" class="cart-remove" data-remove="${id}">Remover</button><h3>${esc(p.name)}</h3><small>Preço sob consulta</small><div class="qty-control"><button type="button" data-decrease="${id}" aria-label="Diminuir ${esc(p.name)}"><svg class="icon"><use href="#i-minus"/></svg></button><span>${qty}</span><button type="button" data-increase="${id}" aria-label="Aumentar ${esc(p.name)}"><svg class="icon"><use href="#i-plus"/></svg></button></div></div></div>`;
+  $('#cartItems').innerHTML = !count ? `<div class="cart-empty"><svg class="icon"><use href="#i-bag"/></svg><strong>Seu pedido está vazio</strong><p>Adicione seus produtos favoritos pelo catálogo para solicitar um orçamento.</p><button class="btn btn-outline" type="button" data-shopping>Ver produtos <svg class="icon"><use href="#i-arrow"/></svg></button></div>` :
+    [...basket].map(([key,qty]) => {
+      const {product:p,variant:v} = decodeItem(key);
+      if (!p) return '';
+      const safeKey = esc(key);
+      return `<div class="cart-item"><div class="cart-item-img">${artFor(p)}</div><div><button type="button" class="cart-remove" data-remove="${safeKey}">Remover</button><h3>${esc(p.name)}</h3>${v?`<span class="cart-variant">${esc(v.name)}</span>`:''}<small>Preço sob consulta</small><div class="qty-control"><button type="button" data-decrease="${safeKey}" aria-label="Diminuir ${esc(p.name)}"><svg class="icon"><use href="#i-minus"/></svg></button><span>${qty}</span><button type="button" data-increase="${safeKey}" aria-label="Aumentar ${esc(p.name)}"><svg class="icon"><use href="#i-plus"/></svg></button></div></div></div>`;
     }).join('');
   $('#sendWhatsApp').disabled = count === 0;
 }
@@ -92,13 +115,13 @@ function unlockBody(){if (!$('#cartDrawer').classList.contains('open') && !$('#p
 function openBasket(){closeDetails();closePrivacy();lastFocus=document.activeElement;$('#overlay').hidden=false;$('#cartDrawer').classList.add('open');$('#cartDrawer').setAttribute('aria-hidden','false');lockBody();$('[data-close-cart]').focus();}
 function closeBasket(){const isOpen = $('#cartDrawer').classList.contains('open');$('#cartDrawer').classList.remove('open');$('#cartDrawer').setAttribute('aria-hidden','true');$('#overlay').hidden=true;unlockBody();if (isOpen && lastFocus && lastFocus.isConnected) lastFocus.focus();}
 let modalId;
-function openDetails(id){const p=productById(id);if(!p)return;closeBasket();closePrivacy();lastFocus=document.activeElement;modalId=id;$('#modalTitle').textContent=p.name;$('#modalDescription').textContent=p.description;$('#modalNotice').textContent=p.notice;$('#modalImage').innerHTML=artFor(p);$('#productModal').classList.add('open');$('#productModal').setAttribute('aria-hidden','false');lockBody();$('#closeModal').focus();}
+function openDetails(id){const p=productById(id);if(!p)return;closeBasket();closePrivacy();lastFocus=document.activeElement;modalId=id;$('#modalTitle').textContent=p.name;$('#modalDescription').textContent=p.description;$('#modalNotice').textContent=p.notice;$('#modalImage').innerHTML=artFor(p);$('#modalVariants').innerHTML=variantPicker(p,'modal');$('#productModal').classList.add('open');$('#productModal').setAttribute('aria-hidden','false');lockBody();$('#closeModal').focus();}
 function closeDetails(){const hadOpen=$('#productModal').classList.contains('open');$('#productModal').classList.remove('open');$('#productModal').setAttribute('aria-hidden','true');unlockBody();if(hadOpen && lastFocus && lastFocus.isConnected)lastFocus.focus();}
 function openPrivacy(){closeBasket();closeDetails();lastFocus=document.activeElement;$('#privacyModal').classList.add('open');$('#privacyModal').setAttribute('aria-hidden','false');lockBody();$('#privacyClose').focus();}
 function closePrivacy(){const hadOpen=$('#privacyModal').classList.contains('open');$('#privacyModal').classList.remove('open');$('#privacyModal').setAttribute('aria-hidden','true');unlockBody();if(hadOpen && lastFocus && lastFocus.isConnected)lastFocus.focus();}
 function sendWhatsApp(){if(!basket.size)return;const lines=[
  'Olá! Vim pelo catálogo da Doces Gu Premium e gostaria de consultar preços e disponibilidade:',
- '', ...[...basket].map(([id,qty])=>`• ${productById(id).name} — quantidade: ${qty}`),
+ '', ...[...basket].map(([key,qty])=>{const {product,variant}=decodeItem(key);return `• ${product.name}${variant ? ' — ' + variant.name : ''} — quantidade: ${qty}`;}),
  '', 'Por favor, informem os valores, as condições e as opções de entrega. Obrigado!'
 ];window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener,noreferrer');}
 
@@ -106,7 +129,7 @@ function sendWhatsApp(){if(!basket.size)return;const lines=[
 document.addEventListener('click', e => {
   const button=e.target.closest('button');
   if(!button)return;
-  if(button.matches('[data-add]'))addItem(button.dataset.add);
+  if(button.matches('[data-add]')){const sel=button.closest('.product-card')?.querySelector('[data-product-variant]');addItem(button.dataset.add,sel?.value);}
   if(button.matches('[data-details]'))openDetails(button.dataset.details);
   if(button.matches('[data-open-cart]'))openBasket();
   if(button.matches('[data-close-cart]'))closeBasket();
@@ -122,7 +145,7 @@ document.addEventListener('click', e => {
 $('#overlay').addEventListener('click',closeBasket);
 $('#closeModal').addEventListener('click',closeDetails);
 $('#productModal').addEventListener('click',e=>{if(e.target===$('#productModal'))closeDetails();});
-$('#modalAdd').addEventListener('click',()=>{addItem(modalId);closeDetails();openBasket();});
+$('#modalAdd').addEventListener('click',()=>{addItem(modalId,$('#modalVariants [data-product-variant]')?.value);closeDetails();openBasket();});
 $('#privacyBtn').addEventListener('click',openPrivacy);
 $('#privacyClose').addEventListener('click',closePrivacy);
 $('#privacyOk').addEventListener('click',closePrivacy);

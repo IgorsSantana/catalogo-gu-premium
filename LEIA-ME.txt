@@ -1,46 +1,23 @@
-DOCES GU PREMIUM — LANDING PAGE / CATÁLOGO DIGITAL
+DOCES GU PREMIUM — CATÁLOGO DIGITAL 2026
 
-1. COMO ABRIR
-   Abra index.html no navegador (Chrome, Edge ou Firefox).
-   O catálogo é estático; não exige instalação de dependências.
+Site estático e responsivo para catálogo de produtos com orçamento pelo WhatsApp.
 
-2. COMO PUBLICAR
-   Publique os arquivos na raiz do repositório ou hospedagem estática:
-   - index.html
-   - styles.css
-   - script.js
-   - assets/
-   - downloads/
-   Os caminhos são relativos e funcionam em GitHub Pages, Render Static Site e similares.
+COMEÇAR
+- Abra index.html no navegador, ou publique a raiz do projeto em uma hospedagem estática.
+- Todos os arquivos e imagens ficam nas pastas deste pacote.
+- Catálogo em PDF disponibilizado no site: downloads/catalogo-original.pdf. O PDF revisado de 2026 está incluído no pacote ZIP atualizado.
 
-3. O QUE ESTÁ FUNCIONAL
-   - Página responsiva com identidade visual Doces Gu Premium.
-   - Catálogo com filtros de doces e itens para revenda.
-   - Detalhes de produto e lista de orçamento com quantidades.
-   - Mensagem pronta para atendimento por WhatsApp.
-   - Seção de destaque para Amendoleite e acesso ao PDF original.
-   - Imagem transparente otimizada em assets/amendoleite-recorte.webp.
+PRODUTOS (três itens únicos)
+1. Amendoleite — doce de amendoim com leite, embalagem em pote. O nome Biriba foi unificado a Amendoleite a pedido da marca.
+2. Paçoca Caseira Premium — um único produto com três apresentações: unidade de 90 g, espeto com 30 unidades, caixa com 4 espetos (total 120 unidades).
+3. Amendoim Frito Salgado Sem Pele com Alho — embalagem individual de 45 g, extraído do catálogo PDF de 2026. A imagem sem fundo está em assets/amendoim-frito-45g.webp (PNG em assets/amendoim-frito-45g.png).
 
-4. PRODUTOS E NOMENCLATURA
-   A marca confirmou que Biriba e Amendoleite correspondem ao mesmo doce.
-   O catálogo digital utiliza apenas o nome AMENDOLEITE.
-   Para editar produtos, altere PRODUCTS no início de script.js.
-   O destaque principal e o card do Amendoleite usam o recorte transparente.
+PEDIDOS
+- O botão + adiciona o produto; a paçoca tem seletor de apresentação.
+- O carrinho separa a paçoca por apresentação e preserva quantidades independentes.
+- O WhatsApp recebe a lista de produtos com a apresentação escolhida. Os preços continuam sob consulta.
 
-5. WHATSAPP
-   Principal (botões/orçamentos): (32) 99928-6097.
-   Alternativo no rodapé: (32) 98493-4826.
-   Atualize WHATSAPP_NUMBER em script.js para trocar o número do pedido.
-
-6. INFORMAÇÕES A CONFIRMAR COM A MARCA
-   - Preços, disponibilidade, entrega e condições comerciais.
-   - Peso e composição, alergênicos, dados nutricionais e informações de rótulo.
-   - A imagem de destaque foi tratada digitalmente. Antes da publicação
-     comercial definitiva, confira se todos os elementos do rótulo mostrado
-     continuam fiéis ao produto real.
-
-7. PRIVACIDADE
-   A lista de orçamento permanece no navegador durante a sessão.
-   O site não possui formulário, conta, pagamentos ou analytics próprios.
-   O CSS atual solicita fontes externas do Google Fonts; avalie a necessidade
-   de hospedar fontes localmente e adequar os avisos de privacidade.
+OBSERVAÇÕES
+- O PDF de 2026 também usa a nomenclatura comercial "Biribá Palito" em uma apresentação própria; mantivemos o nome Amendoleite conforme a orientação anterior do cliente, sem atribuir automaticamente a ele o peso da apresentação do PDF.
+- O site não usa autenticação, pagamentos ou rastreamento. Os itens de orçamento ficam na memória da aba.
+- Consulte a marca para valores, estoque, alergênicos e condições de entrega.

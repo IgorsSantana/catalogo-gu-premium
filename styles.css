@@ -36,3 +36,16 @@
 
 .spotlight-art img{max-height:90%;width:auto;max-width:83%;object-fit:contain}
 @media(max-width:600px){.spotlight-art img{max-width:82%;max-height:94%}}
+
+/* Catálogo 2026: paçoca unificada e amendoim salgado recortado */
+.product-photo.is-amendoim{background:linear-gradient(155deg,#fff7e7,#f4e4c7);display:grid;place-items:center}
+.product-photo.is-amendoim img{width:86%;height:89%;object-fit:contain;filter:drop-shadow(0 13px 15px rgba(92,58,21,.17))}
+.product-card:hover .product-photo.is-amendoim img{transform:scale(1.03)}
+.variant-field{margin:0 0 19px;display:flex;flex-direction:column;gap:7px}
+.variant-field label{font-size:11px;font-weight:800;color:#6a4a40}
+.variant-field select{width:100%;border:1px solid #e6cbb8;background:#fffdf9;color:#4b342e;border-radius:10px;padding:11px 12px;font:700 12px var(--sans);cursor:pointer;min-height:44px}
+.variant-field select:focus-visible{outline:3px solid #ffc45b;outline-offset:2px}
+.modal-variants .variant-field{margin-top:15px;margin-bottom:4px}
+.modal-image:has(img[src*="amendoim-frito"]) {background:#fff1d7}
+.cart-variant{display:block;font-size:11px;color:var(--red);font-weight:700;margin:0 0 4px}
+@media(max-width:600px){.product-photo.is-amendoim img{height:92%;width:76%}}
