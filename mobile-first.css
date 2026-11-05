@@ -148,6 +148,7 @@ img {
 .hero-photo {
   object-fit: contain;
   object-position: center;
+  transform: none;
 }
 
 .hero-float-top {
