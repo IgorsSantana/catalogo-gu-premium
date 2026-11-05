@@ -37,7 +37,7 @@ const artFor = p => '<img src="' + esc(p.image) + '" alt="' + esc(p.imageAlt) + 
 function renderProducts(filter='todos'){
  const products=PRODUCTS.filter(p=>filter==='todos'||p.tags.includes(filter));
  $('#productGrid').innerHTML=products.map(p=>'<article class="product-card" data-product-card="'+esc(p.id)+'">'+
- '<div class="product-photo is-'+esc(p.theme)+'"><span class="product-label">'+esc(p.label)+'</span>'+artFor(p)+'</div>'+
+ '<button type="button" class="product-photo is-'+esc(p.theme)+'" data-details="'+esc(p.id)+'" aria-label="Ver fotos e detalhes de '+esc(p.name)+'"><span class="product-label">'+esc(p.label)+'</span>'+artFor(p)+'<span class="photo-hint">Ver fotos <svg class="icon"><use href="#i-arrow"/></svg></span></button>'+
  '<div class="product-body"><span class="product-category">'+esc(p.categoryLabel)+'</span><h3>'+esc(p.name)+'</h3><p>'+esc(p.subtitle)+'</p>'+
  (p.id==='pacoca'?'<div class="product-presentation-note">Unidade 90 g · Espeto 30 un. · Caixa 4 espetos</div>':'')+
  '<div class="product-bottom"><div class="product-price"><small>Preço</small><strong>Sob consulta</strong></div>'+
@@ -55,6 +55,23 @@ function presentationsFor(p){
  '<strong>'+esc(f.title)+'</strong><span>'+esc(f.detail)+'</span><b>'+esc(f.qty)+'</b></div></div>').join('')+'</div>';
 }
 let lastFocus=null;
+let activeGallery=[];
+function selectPhoto(index){
+ const photo=activeGallery[index];if(!photo)return;
+ $('#galleryPhoto').src=photo.image;
+ $('#galleryPhoto').alt=photo.alt;
+ $('#galleryCaption').textContent=photo.caption;
+ $$('.gallery-thumb').forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+}
+function renderGallery(p){
+ activeGallery=p.id==='pacoca'?packFormats.map(f=>({image:f.image,alt:f.alt,caption:f.title+' · '+f.qty})):
+ [{image:p.image,alt:p.imageAlt,caption:p.name}];
+ $('#modalImage').innerHTML='<div class="gallery-stage"><img id="galleryPhoto" src="'+esc(activeGallery[0].image)+'" alt="'+esc(activeGallery[0].alt)+'"></div>'+
+ '<p id="galleryCaption" class="gallery-caption" aria-live="polite">'+esc(activeGallery[0].caption)+'</p>'+
+ (activeGallery.length>1?'<div class="gallery-thumbs" role="group" aria-label="Fotos das apresentações">'+activeGallery.map((photo,i)=>
+ '<button type="button" class="gallery-thumb" data-photo="'+i+'" aria-pressed="'+(i===0)+'" aria-label="Ver foto: '+esc(packFormats[i].title)+'"><img src="'+esc(photo.image)+'" alt=""><span>'+esc(packFormats[i].title)+'</span></button>').join('')+'</div>':'');
+}
+
 function unlockBody(){if(!$('#productModal').classList.contains('open')&&!$('#privacyModal').classList.contains('open'))document.body.classList.remove('no-scroll');}
 function openDetails(id){
  const p=productById(id);if(!p)return;
@@ -62,7 +79,8 @@ function openDetails(id){
  $('#modalTitle').textContent=p.name;
  $('#modalDescription').textContent=p.description;
  $('#modalNotice').textContent=p.notice;
- $('#modalImage').innerHTML=artFor(p);
+ renderGallery(p);
+ $('.modal-card').scrollTop=0;
  $('#modalPresentations').innerHTML=presentationsFor(p);
  $('#modalContact').href='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent('Olá! Vi o produto '+p.name+' no catálogo da Doces Gu Premium e gostaria de consultar preços, apresentações e disponibilidade.');
  $('#productModal').classList.add('open');
@@ -84,6 +102,7 @@ function closePrivacy(){
 }
 document.addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b)return;
+ if(b.matches('[data-photo]'))selectPhoto(Number(b.dataset.photo));
  if(b.matches('[data-details]'))openDetails(b.dataset.details);
  if(b.matches('[data-filter]')){$$('.filter').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active));});renderProducts(b.dataset.filter);}
 });
